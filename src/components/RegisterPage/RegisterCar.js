@@ -30,7 +30,9 @@ class RegisterCar extends Component {
                     <label htmlFor="year">
                     Year:
                     <input
-                        type="year"
+                        type="number"
+                        min="1885"
+                        max="2022"
                         name="year"
                         value={this.props.state.car_year}
                         onChange={this.props.handleInputChangeFor('car_year')}
