@@ -29,6 +29,9 @@ class RegisterPage extends Component {
           car_make: this.state.car_make,
           car_model: this.state.car_model,
           car_year: this.state.car_year,
+          shop_name: this.state.shop_name,
+          shop_address: this.state.shop_address,
+          shop_number: this.state.shop_address,
         },
       });
     } else {
