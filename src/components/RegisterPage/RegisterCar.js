@@ -11,7 +11,7 @@ class RegisterCar extends Component {
                         type="make"
                         name="make"
                         value={this.props.state.car_make}
-                        onChange={this.props.handleInputChangeFor('make')}
+                        onChange={this.props.handleInputChangeFor('car_make')}
                     />
                     </label>
                 </div>
@@ -22,7 +22,7 @@ class RegisterCar extends Component {
                         type="model"
                         name="model"
                         value={this.props.state.car_model}
-                        onChange={this.props.handleInputChangeFor('model')}
+                        onChange={this.props.handleInputChangeFor('car_model')}
                     />
                     </label>
                 </div>
@@ -33,7 +33,7 @@ class RegisterCar extends Component {
                         type="year"
                         name="year"
                         value={this.props.state.car_year}
-                        onChange={this.props.handleInputChangeFor('year')}
+                        onChange={this.props.handleInputChangeFor('car_year')}
                     />
                     </label>
                 </div>

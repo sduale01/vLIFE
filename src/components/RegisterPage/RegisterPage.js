@@ -25,13 +25,14 @@ class RegisterPage extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
+          car_make: this.state.car_make,
+          car_model: this.state.car_model,
+          car_year: this.state.car_year,
         },
       });
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }
-
-    this.props.history.push('/register-car')
   } // end registerUser
 
   handleInputChangeFor = propertyName => (event) => {
