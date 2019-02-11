@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+// import componenets I made
+import RegisterCar from './RegisterCar.js';
+
 class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    car_make: '',
+    car_model: '',
+    car_year: 0,
+    shop_name: '',
+    shop_address: '',
+    shop_address: '',
   };
 
   registerUser = (event) => {
@@ -21,6 +30,8 @@ class RegisterPage extends Component {
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }
+
+    this.props.history.push('/register-car')
   } // end registerUser
 
   handleInputChangeFor = propertyName => (event) => {
@@ -64,6 +75,8 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
+
+          <RegisterCar state={this.state} handleInputChangeFor={this.handleInputChangeFor}/>
           <div>
             <input
               className="register"
