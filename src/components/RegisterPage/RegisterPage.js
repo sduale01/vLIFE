@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 // import componenets I made
 import RegisterCar from './RegisterCar.js';
+import RegisterAutoShop from './RegisterAutoShop.js';
 
 class RegisterPage extends Component {
   state = {
@@ -13,7 +14,7 @@ class RegisterPage extends Component {
     car_year: 0,
     shop_name: '',
     shop_address: '',
-    shop_address: '',
+    shop_number: '',
   };
 
   registerUser = (event) => {
@@ -78,6 +79,7 @@ class RegisterPage extends Component {
           </div>
 
           <RegisterCar state={this.state} handleInputChangeFor={this.handleInputChangeFor}/>
+          <RegisterAutoShop state={this.state} handleInputChangeFor={this.handleInputChangeFor}/>
           <div>
             <input
               className="register"
