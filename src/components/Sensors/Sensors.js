@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 class Sensors extends Component {
+  componentDidMount() {
+    this.props.dispatch({type: 'FETCH_SENSOR'});
+  }
   render() {
     return (
       <div>
@@ -9,7 +12,7 @@ class Sensors extends Component {
           This page will show the user's sensors
         </p>
         <div>
-          {JSON.stringify(this.props.user)}
+          {JSON.stringify(this.props.sensor)}
         </div>
     </div>
     )
@@ -17,6 +20,6 @@ class Sensors extends Component {
 }
 
 const mapReduxStoreToProps = state => ({
-  user: state.user
+  sensor: state.sensor
 });
 export default connect(mapReduxStoreToProps)(Sensors);

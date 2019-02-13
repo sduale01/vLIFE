@@ -1,8 +1,7 @@
 const sensorReducer = (state = {}, action) => {
     switch (action.type) {
       case 'SET_SENSOR':
-      // console.log(action.payload);
-      
+    //   console.log(action.payload);
         return action.payload;
       default:
         return state;
