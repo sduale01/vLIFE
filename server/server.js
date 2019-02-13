@@ -8,6 +8,9 @@ const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
 
+// Cron tasks
+
+
 // Route includes
 const userRouter = require('./routes/user.router');
 const sensorRouter = require('./routes/sensor.router');

@@ -11,13 +11,22 @@ const instance = axios.create({ baseURL: 'http://localhost:5000' });
 class MockTask {
     constructor() {
         // Send data every 10 seconds
-        this.cronTask = cron.schedule('*/10 * * * * *', (id) => {
-            this.sendMockData();
-        }, {
-            scheduled: false
-        });
-        // Stores id's for the devices to create mock data for
-        this.devices = [];
+        // this.cronTask = cron.schedule('*/10 * * * * *', (id) => {
+        //     this.sendMockData();
+        // }, {
+        //     scheduled: false
+        // });
+        // // Stores id's for the devices to create mock data for
+        // this.devices = [];
+
+        this.cronTask = cron.schedule('*/5 * * * * *' => {
+            console.log('runs every 5 seconds')
+            
+        }), {
+            scheduled: true
+        }
+
+        
     }
 
     startMockTask(id) {

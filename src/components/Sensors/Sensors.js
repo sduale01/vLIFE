@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import SensorList from './SensorList';
 
 class Sensors extends Component {
   componentDidMount() {
@@ -8,18 +9,15 @@ class Sensors extends Component {
   render() {
     return (
       <div>
-        <p>
-          This page will show the user's sensors
-        </p>
         <div>
-          {JSON.stringify(this.props.sensor)}
         </div>
+        <h3>Sensor Name</h3>
+        <SensorList />
+        
+        
     </div>
     )
   }
 }
 
-const mapReduxStoreToProps = state => ({
-  sensor: state.sensor
-});
-export default connect(mapReduxStoreToProps)(Sensors);
+export default connect()(Sensors);
