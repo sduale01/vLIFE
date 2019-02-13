@@ -8,7 +8,7 @@ class SensorList extends Component {
                 {JSON.stringify(this.props.sensor)}
                 <ul>
                     {this.props.sensor.map(x => {
-                        return <li key={x.id}>{x.sensor_name}</li>
+                        return <li key={x.id}><p>Sensor name:{x.sensor_name}---------Sensor Level: {x.sensor_level}</p></li>
                     })}
                 </ul>
             </div>

@@ -1,7 +1,6 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const axios = require('axios');
 
 // add node cron
 const cron = require('node-cron');
@@ -18,24 +17,26 @@ router.get('/', (req, res) => {
     // res.send(req.user);
   }); // end of get
 
-  router.put('/update/:id', (req, res) => {
-    const queryText = `UPDATE "sensors" SET sensor_level = 72 where "id" = 4;`
-    pool.query(queryText).then(response => {
-        console.log('PUT is succesfull');
-        res.sendStatus(200);
-    }).catch(error => {
-        console.log('error in making PUT request', error);
-        res.sendStatus(500);
-    });
-    // axios.put('/api/sensor/update', queryText)
-    // .then(response => {
-    //     console.log(response.data);
+  cron.schedule("*/4 * * * * *", () => {
+      // if car speed ranges between 55-75 subtract 9 from "sensor level"
+    console.log('runs this task every 4 seconds');
+    router.put('/update/:id', (req, res) => {
+        console.log(req.params);
         
-    // }).catch(error => {
-    //     console.log('error in making PUT', error);
-    //     res.sendStatus(500);
-    // });
-  }); // end of put
+        // const queryText = `UPDATE "sensors" SET sensor_level = sensor_level - 5;`
+        // pool.query(queryText).then(response => {
+        //     console.log('PUT is succesfull');
+        //     res.sendStatus(200);
+        // }).catch(error => {
+        //     console.log('error in making PUT request', error);
+        //     res.sendStatus(500);
+        // });
+      }); // end of put
+});
+
+updateSensor = () => {
+    
+}
 
 /**
  * POST route template

@@ -8,10 +8,10 @@ body {
     margin: 50px;
 }
 
-form {
+.form-styling {
     background-color: #dbd5d5;
     width: 30%;
-    height: 400px;
+    height: 550px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
