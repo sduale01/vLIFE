@@ -12,7 +12,20 @@ class Sensors extends Component {
   }
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_SENSOR'});
+    this.startPolling();
   }
+
+  startPolling() {
+    this.interval = setInterval(
+      () => { 
+        this.props.dispatch({type: 'FETCH_SENSOR'});
+      }, 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   // grabs the value of the input field
   handleChange = (event) => {
     this.setState({
