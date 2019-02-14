@@ -15,11 +15,10 @@ class HighchartsExample extends Component {
         super(props)
     }
     render() {
-
         return (
             <div className="app">
             {JSON.stringify(this.props.gasData.map(row => Number(row.level)))}
-            <HighchartsChart >
+            <HighchartsChart>
               <Chart />
         
               <Title>Live Gas Data</Title>
