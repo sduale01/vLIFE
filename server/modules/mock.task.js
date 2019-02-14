@@ -11,21 +11,13 @@ const instance = axios.create({ baseURL: 'http://localhost:5000' });
 class MockTask {
     constructor() {
         // Send data every 10 seconds
-        this.cronTask = cron.schedule('*/5 * * * * *', (id) => {
+        this.cronTask = cron.schedule('*/10 * * * * *', (id) => {
             this.sendMockData();
         }, {
             scheduled: false
         });
         // Stores id's for the devices to create mock data for
         this.devices = [];
-
-        // this.cronTask = cron.schedule('*/5 * * * * *' => {
-        //     console.log('runs every 5 seconds')
-            
-        // }), {
-        //     scheduled: true
-        // }
-
         
     }
 
@@ -56,15 +48,6 @@ class MockTask {
 
     // This function is called every time a new device id is added to the
     // device array and by the cronTask at the interval set in the constructor
-    sendSensorData() {
-        const queryText = `UPDATE "sensors" SET sensor_level = 54 where "id" = $1;`
-        axios.put({
-            method: 'PUT',
-            data: queryText
-        }).then(response => {
-            
-        })
-    }
     sendMockData() {
         // TODO: Make these numbers change over time to better simulate live data
         const result = {

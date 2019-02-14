@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const axios = require('axios');
 
 // add node cron
 const cron = require('node-cron');
@@ -17,7 +18,6 @@ router.get('/', (req, res) => {
     // res.send(req.user);
 }); // end of get
 let task;
-
 function startInterval(carSpeed) {
     // if car speed ranges between 55-75 subtract 9 from "sensor level"
     console.log('runs this task every 4 seconds');
@@ -48,15 +48,5 @@ router.put('/update/:speed', (req, res) => {
     res.sendStatus(200);
 }); // end of put
 
-updateSensor = () => {
-
-}
-
-/**
- * POST route template
- */
-// router.post('/', (req, res) => {
-
-// });
 
 module.exports = router;

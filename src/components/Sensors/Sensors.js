@@ -37,12 +37,18 @@ class Sensors extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
-    axios.put(`/api/sensor/update/${this.state.speed}`).then(response => {
+    axios.post(`/api/gas`, this.state).then(response => {
       this.props.dispatch({type: 'FETCH_SENSOR'});
     }).catch(error => {
       console.log('error in client side PUT', error);
     });
   }
+
+  // Runs when stop car button is pressed
+  // handleStopCar = () => {
+  //   console.log('stop btn pressed');
+    
+  // }
   render() {
     return (
       <div>
@@ -53,6 +59,7 @@ class Sensors extends Component {
           <input onChange={this.handleChange} type="number" min="0" max="85" />
           <button>Set Speed</button>
         </form>
+        {/* <button onClick={this.handleStopCar}>Stop Car</button> */}
         <h3>Sensor Name</h3>
         <SensorList />
         
