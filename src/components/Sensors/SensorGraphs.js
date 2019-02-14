@@ -1,21 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Highcharts from "highcharts";
-import HighchartsReact from 'highcharts-react-official';
-
-const options = {
-    chart: {
-      type: 'spline'
-    },
-    title: {
-      text: 'My chart'
-    },
-    series: [
-      {
-        data: [1, 2, 1, 4, 3, 6]
-      }
-    ]
-  };
+import HighchartsExample from './HighchartsExample';
+// import Highcharts from "highcharts";
+// import HighchartsReact from 'highcharts-react-official';
 
 class SensorGraphs extends Component {
   // GETS table data on page load
@@ -32,24 +19,17 @@ componentWillUnmount() {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_GAS_DATA'});
-      }, 2000);
+      }, 20000);
   }
-
-  
-
     render() {  
         return (
             <div>
+                <HighchartsExample />
                 {/* {JSON.stringify(this.props.gasData)} */}
                 <h1>this page will display a graph</h1>
-                {/* <HighchartsReact
-                    highcharts={Highcharts}
-                    constructorType={'stockChart'}
-                    options={options}
-                /> */}
                 <ul>
                     {this.props.gasData.map(row => {
-                        return <li>{row.level}: {row.time}</li>
+                        return <li key={row.id}>{row.level}: {row.time}</li>
                     })}
                 </ul>
             </div>
