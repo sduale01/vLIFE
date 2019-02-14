@@ -24,7 +24,7 @@ componentWillUnmount() {
     render() {  
         return (
             <div>
-                <HighchartsExample />
+                <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
                 <h1>this page will display a graph</h1>
                 <ul>
