@@ -28,19 +28,17 @@ CREATE TABLE "junction_table" (
 CREATE TABLE "sensors" (
 	"id" serial PRIMARY KEY,
 	"sensor_name" varchar(200) NOT NULL,
-	"sensor_level" DECIMAL(5,2) CHECK ("sensor_level" between 0 and 100), 
-	"state" bool NOT NULL DEFAULT false,
-	"refrence_car" integer REFERENCES "car_info"("id"),
-	"track_time" TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+	"state" bool NOT NULL DEFAULT 'false',
+	"refrences_car" integer REFERENCES "car_info"("id"),
+    "sensor_fault" TIMESTAMP WITH TIME ZONE
 );
-
 
 CREATE TABLE "fluid_levels" (
 	"id" serial PRIMARY KEY,
 	"fluid_name" varchar(100) NOT NULL,
 	"fluid_level" integer NOT NULL,
-	"reference_car" integer REFERENCES "car_info"("id"),
-	"track_time" TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+	"references_car" integer REFERENCES "car_info"("id"),
+    "fault_date" TIMESTAMP WITH TIME ZONE
 );
 
 

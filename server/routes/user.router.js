@@ -19,13 +19,10 @@ router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = `WITH 
-  "new1" AS (INSERT INTO "person" ("username", "password") VALUES ($1, $2) RETURNING "id"),
-  "new2" AS (INSERT INTO "car_info" ("make", "model", "year") VALUES ($3, $4, $5) RETURNING "id"),
-  "new3" AS (INSERT INTO "auto_shop" ("shop_name", "shop_address", "shop_number") VALUES ($6, $7, $8) RETURNING "id")
-    INSERT INTO "junction_table" ("user_id", "car_id", "auto_shop_id") 
-    SELECT "new1"."id", "new2"."id", "new3"."id" 
-    FROM "new1", "new2", "new3";`;
+  const queryText = `WITH "new_user" AS 
+      (INSERT INTO "person" ("username", "password") VALUES ($1, $2) RETURNING "id"),
+      "new_user2" AS (INSERT INTO "auto_shop" ("shop_name", "shop_address", "shop_number") VALUES ($6, $7, $8))
+      INSERT INTO "car_info" ("make", "model", "year") VALUES ($3, $4, $5);`;
   pool.query(queryText, [ username, password, 
                           req.body.car_make, req.body.car_model,
                           req.body.car_year, req.body.shop_name,

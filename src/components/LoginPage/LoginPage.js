@@ -40,7 +40,7 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form className="form-styling" onSubmit={this.login}>
+        <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
             <label htmlFor="username">

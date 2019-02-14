@@ -18,7 +18,6 @@ class MockTask {
         });
         // Stores id's for the devices to create mock data for
         this.devices = [];
-        
     }
 
     startMockTask(id) {

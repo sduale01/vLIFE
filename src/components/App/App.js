@@ -15,9 +15,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import Sensors from '../Sensors/Sensors';
+import InfoPage from '../InfoPage/InfoPage';
 
-import SensorGraphs from '../Sensors/SensorGraphs';
 import './App.css';
 
 class App extends Component {
@@ -40,11 +39,6 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
-            <ProtectedRoute 
-              exact 
-              path="/graphdata"
-              component={SensorGraphs}
-             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -58,10 +52,9 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/sensors"
-              component={Sensors}
+              path="/info"
+              component={InfoPage}
             />
-            
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
