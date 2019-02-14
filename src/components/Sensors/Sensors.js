@@ -61,7 +61,7 @@ class Sensors extends Component {
         </form>
         {/* <button onClick={this.handleStopCar}>Stop Car</button> */}
         <h3>Sensor Name</h3>
-        <SensorList />
+        <SensorList history={this.props.history}/>
         
         
     </div>

@@ -94,7 +94,8 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    pool.query('SELECT * FROM "gas_sensor_data"')
+    pool.query(`SELECT * FROM "gas_sensor_data" 
+                ORDER BY "time" DESC LIMIT 1`)
     .then(response => res.send(response.rows))
     .catch(error => {
         console.log('error in making GET ', error);
