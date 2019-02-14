@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
-function* fetchSensor() {
+function* fetchGasData() {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
@@ -13,7 +13,7 @@ function* fetchSensor() {
     // allow the server session to recognize the user
     // If a user is logged in, this will return their information
     // from the server session (req.user)
-    const response = yield axios.get('api/gas', config);
+    const response = yield axios.get('api/gasdata', config);
 
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
@@ -21,14 +21,14 @@ function* fetchSensor() {
     // console.log(response.data);
     console.log(response.data);
     
-    yield put({ type: 'SET_SENSOR', payload: response.data });
+    yield put({ type: 'SET_GAS_DATA', payload: response.data });
   } catch (error) {
     console.log('User get request failed', error);
   }
 }
 
-function* sensorSaga() {
-  yield takeLatest('FETCH_SENSOR', fetchSensor);
+function* gasDataSaga() {
+  yield takeLatest('FETCH_GAS_DATA', fetchGasData);
 }
 
-export default sensorSaga;
+export default gasDataSaga;

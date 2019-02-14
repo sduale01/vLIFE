@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import SensorGraphs from '../Sensors/SensorGraphs';
+import Sensors from '../Sensors/Sensors';
 import './App.css';
 
 class App extends Component {
@@ -58,8 +59,8 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
+              path="/sensors"
+              component={Sensors}
             />
             
             {/* If none of the other routes matched, we will show a 404. */}
