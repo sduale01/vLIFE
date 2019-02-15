@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SensorList from './SensorList';
 import axios from 'axios';
+import StopCar from './StopCar';
 
 class Sensors extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class Sensors extends Component {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_SENSOR'});
-      }, 20000);
+      }, 2000);
   }
 
   componentWillUnmount() {
@@ -59,6 +60,7 @@ class Sensors extends Component {
           <input onChange={this.handleChange} type="number" min="0" max="85" />
           <button>Set Speed</button>
         </form>
+        <StopCar />
         {/* <button onClick={this.handleStopCar}>Stop Car</button> */}
         <h3>Sensor Name</h3>
         <SensorList history={this.props.history}/>

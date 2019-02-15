@@ -19,7 +19,7 @@ componentWillUnmount() {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_GAS_DATA'});
-      }, 100000);
+      }, 1000);
   }
     render() {  
         return (

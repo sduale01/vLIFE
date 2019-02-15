@@ -1,50 +1,25 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const axios = require('axios');
 
 // add node cron
 const cron = require('node-cron');
 let task;
-// task = cron.schedule("*/5 * * * * *", () => {
-//     console.log('runs every 5 seconds');
-    
-//     sendGasData();
-// }), {
-//     scheduled: false
-// }
-// function startGasData() {
-//     // If the cronTask is stopped, start it
-//     if (this.task.getStatus() === 'stoped') {
-//         this.task.start();
-//     }
-//     sendGasData();
-// }
 
+router.post('/stoptask', (req,res) => {
+    if (task) {
+        task.stop();
+    }
+})
 // function stopGasData() {
 //     if(task) {
 //         task.stop();
 //     }
 // }
 
-// sendGasData = () => {
-//     // TODO: Make these numbers change over time to better simulate live data
-//     const result = {
-//         gasLevel: 70, // Gas level
-//     };
-//         axios({
-//             method: 'POST',
-//             url: '/api/gas',
-//             data: result
-
-//         }).catch(error => {
-//             console.log(error);
-//         });
-// }
 function startInterval(carSpeed) {
-    // if car speed ranges between 55-75 subtract 9 from "sensor level"
     console.log('runs this task every 4 seconds');
-    task = cron.schedule("*/4 * * * * *", () => {
+    task = cron.schedule("*/1 * * * * *", () => {
         console.log('car speed is:', carSpeed);
         getNewestRow(carSpeed);
     });
