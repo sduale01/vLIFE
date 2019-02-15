@@ -23,12 +23,30 @@ function* fetchGasData() {
     
     yield put({ type: 'SET_GAS_DATA', payload: response.data });
   } catch (error) {
-    console.log('User get request failed', error);
+    console.log('Gas GAS request failed', error);
   }
+}
+
+function* deleteGasChart(action) {
+  try {
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+
+    yield axios.delete(`/api/gasdata/${action.payload}`, config)
+
+    yield put({ type: 'SET_GAS_DATA'});
+  } catch (error) {
+    console.log('Gas DELETE request failed');
+    
+  }
+  
 }
 
 function* gasDataSaga() {
   yield takeLatest('FETCH_GAS_DATA', fetchGasData);
+  yield takeLatest('DELETE_GAS_CHART', deleteGasChart)
 }
 
 export default gasDataSaga;

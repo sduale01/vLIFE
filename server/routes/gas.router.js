@@ -6,17 +6,12 @@ const router = express.Router();
 const cron = require('node-cron');
 let task;
 
+// this will stop the cron task when Stop Car button is pressed.
 router.post('/stoptask', (req,res) => {
     if (task) {
         task.stop();
     }
 })
-// function stopGasData() {
-//     if(task) {
-//         task.stop();
-//     }
-// }
-
 function startInterval(carSpeed) {
     console.log('runs this task every 4 seconds');
     task = cron.schedule("*/1 * * * * *", () => {

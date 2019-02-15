@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import {
   HighchartsChart, Chart, withHighcharts, XAxis, YAxis, Title, Legend, LineSeries
 } from 'react-jsx-highcharts';
+import DeleteChart from './DeleteChart';
 
 class HighchartsExample extends Component {
     render() {
@@ -26,6 +27,7 @@ class HighchartsExample extends Component {
                 <LineSeries name="Gas Level" data={this.props.gasData.map(row => Number(row.level))} />
               </YAxis>
             </HighchartsChart>
+            <DeleteChart />
           </div>
         )
     }
