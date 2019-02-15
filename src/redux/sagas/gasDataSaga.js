@@ -14,11 +14,6 @@ function* fetchGasData() {
     // If a user is logged in, this will return their information
     // from the server session (req.user)
     const response = yield axios.get('api/gasdata', config);
-
-    // now that the session has given us a user object
-    // with an id and username set the client-side user object to let
-    // the client-side code know the user is logged in
-    // console.log(response.data);
     // console.log(response.data);
     
     yield put({ type: 'SET_GAS_DATA', payload: response.data });
