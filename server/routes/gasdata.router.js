@@ -23,17 +23,16 @@ router.delete('/:id', (req, res) => {
     
     switch (true) {
         case (deleteFrequency == 1):
-        startDeleteChartCron(deleteFrequency);
+        startHourlyDelete();
             break;
         case (deleteFrequency == 2):
-        startDeleteChartCron(deleteFrequency);
-        
+        startDailyDelete();
             break;
         case (deleteFrequency == 3):
-        startDeleteChartCron(deleteFrequency);
+        startWeeklyDelete();
             break;
         case (deleteFrequency == 4):
-        startDeleteChartCron(deleteFrequency);
+        startMonthlyDelete();
             break;    
     
         default:
@@ -41,9 +40,36 @@ router.delete('/:id', (req, res) => {
     }
 }) // end of DELETE
 
-startDeleteChartCron = (deleteFrequency) => {
-    console.log('runs this task every 4 seconds');
-    task = cron.schedule(`*/${deleteFrequency} * * * * *`, () => {
+// runs every hour.
+startHourlyDelete = () => {
+    console.log('runs this task every hour');
+    task = cron.schedule("0 0 */1 * * * ", () => {
+        console.log('delte frequenct number is:', deleteFrequency);
+        deleteAllRows();
+    });
+}
+
+// runs every day at 12 am.
+startDailyDelete = () => {
+    console.log('runs this task at midnight');
+    task = cron.schedule("0 0 0 * * *", () => {
+        console.log('delte frequenct number is:', deleteFrequency);
+        deleteAllRows();
+    });
+}
+
+//runs every Sunday.
+startWeeklyDelete = () => {
+    console.log('runs this task every sunday');
+    task = cron.schedule("0 0 0 * * Sunday", () => {
+        console.log('delte frequenct number is:', deleteFrequency);
+        deleteAllRows();
+    });
+}
+//runs on the first day of the month.
+startMonthlyDelete = () => {
+    console.log('runs this task on the first of the month');
+    task = cron.schedule("0 0 1 * * ", () => {
         console.log('delte frequenct number is:', deleteFrequency);
         deleteAllRows();
     });
