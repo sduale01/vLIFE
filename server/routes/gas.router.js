@@ -46,89 +46,86 @@ function startInterval(carSpeed) {
     console.log('runs this task every 4 seconds');
     task = cron.schedule("*/4 * * * * *", () => {
         console.log('car speed is:', carSpeed);
-        // will reset maxFuelLevel back to 100 after 4 seconds
-        // want maxFuelLevel to be the current fuel 
-        // let maxFuelLevel = getNewestRow();
-        // console.log(maxFuelLevel);
         getNewestRow(carSpeed);
-        // let maxFuelLevel = 100
-
     });
 }  
 
-// GET current gas levels from database
-
+// GET latest gas levels from database to simulate the device getting the data 
+// fro the car
  getNewestRow = (carSpeed) =>{
     const queryText = `SELECT * FROM "gas_sensor_data" 
                         ORDER BY "time" DESC LIMIT 1;`
     pool.query(queryText)
     .then(response => {
         console.log('respoense form server;', response.rows[0].level);
-        if( response.rows[0].level < 10.00) {
+        if( response.rows[0].level <= 10.00) {
             pool.query(`INSERT INTO "gas_sensor_data" ("level") VALUES (88.00)`)
             .then(response => {
                 console.log('response after refilling gas to 88:',response.rows);
-                let maxFuelLevel = Number(response.rows[0].level)
-                if (carSpeed >= 0 && carSpeed <= 50) {
-                    maxFuelLevel -= 5;
-                    const queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
-                    pool.query(queryText, [maxFuelLevel]).then(response => {
-                        console.log('POST is succesfull');
-                    }).catch(error => {
-                        console.log('error in making POST request', error);
-                    });
-                } else if (carSpeed >= 51 && carSpeed <= 85) {
-                    maxFuelLevel -= 10;
-                    const queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
-                    pool.query(queryText, [maxFuelLevel]).then(response => {
-                        console.log('POST is succesfull');
-                    }).catch(error => {
-                        console.log('error in making POST request', error);
-                    });
-                }
-            })
+                // insertGasData(response, carSpeed);
+            }).catch(error => {
+                console.log('error in making PUT ', error);
+                res.sendStatus(500);
+            });
         } else {
-            let maxFuelLevel = Number(response.rows[0].level)
-        if (carSpeed >= 0 && carSpeed <= 50) {
-            maxFuelLevel -= 5;
-            const queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
-            pool.query(queryText, [maxFuelLevel]).then(response => {
-                console.log('POST is succesfull');
-            }).catch(error => {
-                console.log('error in making POST request', error);
-            });
-        } else if (carSpeed >= 51 && carSpeed <= 85) {
-            maxFuelLevel -= 10;
-            const queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
-            pool.query(queryText, [maxFuelLevel]).then(response => {
-                console.log('POST is succesfull');
-            }).catch(error => {
-                console.log('error in making POST request', error);
-            });
-        }
-        }
-        let maxFuelLevel = Number(response.rows[0].level)
-        if (carSpeed >= 0 && carSpeed <= 50) {
-            maxFuelLevel -= 5;
-            const queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
-            pool.query(queryText, [maxFuelLevel]).then(response => {
-                console.log('POST is succesfull');
-            }).catch(error => {
-                console.log('error in making POST request', error);
-            });
-        } else if (carSpeed >= 51 && carSpeed <= 85) {
-            maxFuelLevel -= 10;
-            const queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
-            pool.query(queryText, [maxFuelLevel]).then(response => {
-                console.log('POST is succesfull');
-            }).catch(error => {
-                console.log('error in making POST request', error);
-            });
+            insertGasData(response, carSpeed);
         }
     }).catch(error => {
-            console.log('error ', error);
+            console.log('error in GET:', error);
             return -1;
         })
+}
+// this function desides the depletion rate of the vehicles gas 
+// depending on its speed
+insertGasData = (response, carSpeed) => {
+    let maxFuelLevel = Number(response.rows[0].level)
+    // let queryText;
+    switch (true) {
+        case (carSpeed <10):
+        maxFuelLevel -= 1;
+        insertQuery(maxFuelLevel);
+            
+            break;
+        case (carSpeed <20):
+        maxFuelLevel -= 2;
+        insertQuery(maxFuelLevel);
+            break;
+        case (carSpeed <30):
+        maxFuelLevel -= 3;
+        insertQuery(maxFuelLevel);
+            break;
+        case (carSpeed <40):
+        maxFuelLevel -= 4;
+        insertQuery(maxFuelLevel);
+            break;
+        case (carSpeed <50):
+        maxFuelLevel -= 5;
+        insertQuery(maxFuelLevel);
+            break;
+        case (carSpeed <60):
+        maxFuelLevel -= 6;
+        insertQuery(maxFuelLevel);
+            break;
+        case (carSpeed <70):
+        maxFuelLevel -= 7;
+        insertQuery(maxFuelLevel);
+            break;
+        case (carSpeed <80):
+        maxFuelLevel -= 8;
+        insertQuery(maxFuelLevel);
+            break;
+        default:
+            break;
+    }
+}
+
+function insertQuery(maxFuelLevel) {
+    queryText = `INSERT INTO "gas_sensor_data" ("level") VALUES ($1)`
+        pool.query(queryText, [maxFuelLevel]).then(response => {
+            console.log('POST is succesfull');
+        }).catch(error => {
+            console.log('error in making POST request', error);
+        });
 }
 router.post('/', (req, res) => {
     console.log('in POST api/gas');

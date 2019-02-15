@@ -19,7 +19,7 @@ class Sensors extends Component {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_SENSOR'});
-      }, 2000);
+      }, 20000);
   }
 
   componentWillUnmount() {

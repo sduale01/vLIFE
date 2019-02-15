@@ -17,7 +17,7 @@ class HighchartsExample extends Component {
     render() {
         return (
             <div className="app">
-            {JSON.stringify(this.props.gasData.map(row => Number(row.level)))}
+            {/* {JSON.stringify(this.props.gasData.map(row => Number(row.level)))} */}
             <HighchartsChart>
               <Chart />
         
