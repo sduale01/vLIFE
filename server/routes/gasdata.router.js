@@ -4,7 +4,10 @@ const router = express.Router();
 
 router.get('/', (req,res) => {
     const queryText = `SELECT * FROM "gas_sensor_data";`
-    pool.query(queryText).then(response => {res.send(response.rows)})
+    pool.query(queryText).then(response => {
+        
+        res.send(response.rows)
+    })
     .catch(error => {
         console.log('error in making GET ', error);
         res.sendStatus(500);

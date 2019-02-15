@@ -19,7 +19,7 @@ function* fetchGasData() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     // console.log(response.data);
-    console.log(response.data);
+    // console.log(response.data);
     
     yield put({ type: 'SET_GAS_DATA', payload: response.data });
   } catch (error) {
