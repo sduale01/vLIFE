@@ -43,8 +43,7 @@ router.delete('/:id', (req, res) => {
 // runs every hour.
 startHourlyDelete = () => {
     console.log('runs this task every hour');
-    task = cron.schedule("0 0 */1 * * * ", () => {
-        console.log('delte frequenct number is:', deleteFrequency);
+    task = cron.schedule("0 * * * * ", () => {
         deleteAllRows();
     });
 }
@@ -53,7 +52,6 @@ startHourlyDelete = () => {
 startDailyDelete = () => {
     console.log('runs this task at midnight');
     task = cron.schedule("0 0 0 * * *", () => {
-        console.log('delte frequenct number is:', deleteFrequency);
         deleteAllRows();
     });
 }
@@ -62,7 +60,6 @@ startDailyDelete = () => {
 startWeeklyDelete = () => {
     console.log('runs this task every sunday');
     task = cron.schedule("0 0 0 * * Sunday", () => {
-        console.log('delte frequenct number is:', deleteFrequency);
         deleteAllRows();
     });
 }
@@ -70,7 +67,6 @@ startWeeklyDelete = () => {
 startMonthlyDelete = () => {
     console.log('runs this task on the first of the month');
     task = cron.schedule("0 0 1 * * ", () => {
-        console.log('delte frequenct number is:', deleteFrequency);
         deleteAllRows();
     });
 }
