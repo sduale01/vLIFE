@@ -1,34 +1,57 @@
 import React, {Component} from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
-// import 
-// import Map from './Map';
+
+const mapStyles = {
+    width: '200px',
+    height: '200px'
+}
+
+// const api_key = process.env.API_KEY
+// console.log(api_key);
 
 class GoogleMaps extends Component {
-    render() {
-        const style = {
-            width: '300px',
-            height: '300px'
+    constructor() {
+        super();
+
+        this.state = {
+            showingInfoWindow: false,
+            activeMarker: {},
+            selectedPlace: {} 
         }
+    }
+
+    onClose = props => {
+        if(this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null,
+            })
+        }
+    }
+    render() {
+        // const style = {
+        //     width: '300px',
+        //     height: '300px'
+        // }
         if(!this.props.loaded) {
             return <div>loading...</div>
         }
         return (
-            <div style={style}>
-                <Map google={this.props.google}/>
+            <div>
+                <Map 
+                    google={this.props.google}
+                    zoom={14}
+                    style={mapStyles}
+                    initialCenter={{
+                        lat: -1.2884,
+                        lng: 36.8233
+                    }}
+                />
             </div>
         )
     }
-
-    // this.scriptCache = cache({
-    //     google: 'https://api.google.com/some/script.js'
-    //   });
-
-    //   GoogleApi({
-    //     apiKey: apiKey,
-    //     libraries: ['places']
-    //   });
 }
-const API_KEY = process.env.API_KEY
+// const API_KEY = process.env.key;
 export default GoogleApiWrapper({
-    apiKey: (API_KEY)
+    apiKey: 'AIzaSyAAqLJxUxikBR1RZOussJZwK31QoNTa7n8'
 })(GoogleMaps);
