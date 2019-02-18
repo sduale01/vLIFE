@@ -20,9 +20,9 @@ class Sensors extends Component {
   startPolling() {
     this.interval = setInterval(
       () => { 
-        this.props.dispatch({type: 'FETCH_SENSOR'});
+        this.props.dispatch({type: 'FETCH_SENSOR'})
         this.props.dispatch({type: 'FETCH_REFILL'});
-      }, 1000);
+      }, 3000);
   }
 
   componentWillUnmount() {

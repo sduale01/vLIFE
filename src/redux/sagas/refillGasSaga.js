@@ -13,16 +13,16 @@ function* refillGas() {
     // allow the server session to recognize the user
     // If a user is logged in, this will return their information
     // from the server session (req.user)
-    const response = yield axios.get('api/gas', config);
+    const response = yield axios.get('api/refillGas', config);
 
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
-    // console.log(response.data);
+    console.log(response.data);
     
     yield put({ type: 'SET_GAS_REFILL', payload: response.data });
   } catch (error) {
-    console.log('User get request failed', error);
+    console.log('refill Gas GET get request failed', error);
   }
 }
 

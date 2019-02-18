@@ -16,7 +16,7 @@ function startInterval(carSpeed) {
     if (task) {
         task.stop();
     }
-    console.log('runs this task every 4 seconds');
+    console.log('runs this task every 1 second');
     task = cron.schedule("*/1 * * * * *", () => {
         console.log('car speed is:', carSpeed);
         getNewestRow(carSpeed);
