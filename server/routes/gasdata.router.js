@@ -73,6 +73,10 @@ startMonthlyDelete = () => {
 
 // will send delete query to the database
 deleteAllRows = () => {
+    // Stops any previously runnig tasks
+    if (task) {
+        task.stop();
+    }
     const queryText = `DELETE FROM "fake_table"`
     pool.query(queryText)
     .then(response => {console.log('table contents deleted');

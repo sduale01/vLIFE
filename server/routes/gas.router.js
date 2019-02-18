@@ -13,6 +13,9 @@ router.post('/stoptask', (req,res) => {
     }
 })
 function startInterval(carSpeed) {
+    if (task) {
+        task.stop();
+    }
     console.log('runs this task every 4 seconds');
     task = cron.schedule("*/1 * * * * *", () => {
         console.log('car speed is:', carSpeed);

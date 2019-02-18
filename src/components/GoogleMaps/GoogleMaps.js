@@ -29,10 +29,6 @@ class GoogleMaps extends Component {
         }
     }
     render() {
-        // const style = {
-        //     width: '300px',
-        //     height: '300px'
-        // }
         if(!this.props.loaded) {
             return <div>loading...</div>
         }

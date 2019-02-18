@@ -20,14 +20,14 @@ componentWillUnmount() {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_GAS_DATA'});
-      }, 1000000);
+      }, 1000);
   }
     render() {  
         return (
             <div>
                 <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
-                <GoogleMaps />
+                {/* <GoogleMaps /> */}
                 {/* <ul>
                     {this.props.gasData.map(row => {
                         return <li key={row.id}>{row.level}: {row.time}</li>
