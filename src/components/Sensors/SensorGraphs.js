@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import HighchartsExample from './HighchartsExample';
+import GoogleMaps from '../GoogleMaps/GoogleMaps';
 // import Highcharts from "highcharts";
 // import HighchartsReact from 'highcharts-react-official';
 
@@ -26,12 +27,12 @@ componentWillUnmount() {
             <div>
                 <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
-                <h1>this page will display a graph</h1>
-                <ul>
+                <GoogleMaps />
+                {/* <ul>
                     {this.props.gasData.map(row => {
                         return <li key={row.id}>{row.level}: {row.time}</li>
                     })}
-                </ul>
+                </ul> */}
             </div>
         );
     }
