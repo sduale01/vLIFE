@@ -77,7 +77,7 @@ deleteAllRows = () => {
     if (task) {
         task.stop();
     }
-    const queryText = `DELETE FROM "fake_table"`
+    const queryText = `DELETE FROM "gas_sensor_data"`
     pool.query(queryText)
     .then(response => {console.log('table contents deleted');
     })

@@ -13,6 +13,7 @@ class Sensors extends Component {
   }
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_SENSOR'});
+    this.props.dispatch({type: 'FETCH_REFILL'});
     this.startPolling();
   }
 
@@ -20,6 +21,7 @@ class Sensors extends Component {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_SENSOR'});
+        this.props.dispatch({type: 'FETCH_REFILL'});
       }, 1000);
   }
 
@@ -44,12 +46,6 @@ class Sensors extends Component {
       console.log('error in client side PUT', error);
     });
   }
-
-  // Runs when stop car button is pressed
-  // handleStopCar = () => {
-  //   console.log('stop btn pressed');
-    
-  // }
   render() {
     return (
       <div>
@@ -61,7 +57,6 @@ class Sensors extends Component {
           <button>Set Speed</button>
         </form>
         <StopCar />
-        {/* <button onClick={this.handleStopCar}>Stop Car</button> */}
         <h3>Sensor Name</h3>
         <SensorList history={this.props.history}/>
         
