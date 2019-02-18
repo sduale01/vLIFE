@@ -28,11 +28,11 @@ componentWillUnmount() {
                 <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
                 <GoogleMaps />
-                <ul>
+                {/* <ul>
                     {this.props.gasData.map(row => {
                         return <li key={row.id}>{row.level}: {row.time}</li>
                     })}
-                </ul>
+                </ul> */}
             </div>
         );
     }
