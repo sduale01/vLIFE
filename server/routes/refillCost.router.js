@@ -20,6 +20,16 @@ router.get('/', (req, res) => {
         console.log('error in making GET request', error);
         res.sendStatus(500);
     })
-})
+});
+
+// GET the total spent on gas
+router.get('/refillTotal', (req, res) => {
+    pool.query(`SELECT sum("gas_price") FROM "gas_budget";`)
+    .then(response => res.send(response.rows))
+    .catch(error => {
+        console.log('error in making GET /refillTotal', error);
+        res.sendStatus(500);
+    });
+});
 
 module.exports = router;

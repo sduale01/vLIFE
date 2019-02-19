@@ -2,15 +2,31 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class RefillGasCost extends Component {
-    // componentDidMount() {
-    //     this.props.dispatch({type: 'FETCH_GAS_PRICE'})
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         refillTotal: ''
+    //     };
     // }
+
+    componentDidMount() {
+        this.props.dispatch({type: 'FETCH_REFILL_TOTAL'});
+    }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.refillTotal !== this.props.refillTotal) {
+    //         this.setState({
+    //             refillTotal: this.props.refillTotal,
+    //         });
+    //     }
+    // }
+
     render() {
         return (
             <div>
                 
                 <h1>Amount spent on gas per month</h1>
-                {/* {JSON.stringify(this.props.refillCost)} */}
+                {JSON.stringify(this.props.refillTotal)}
                 <table>
                     <thead>
                         <tr>
@@ -23,7 +39,16 @@ class RefillGasCost extends Component {
                             <tr>
                                 <td>{refill.refill_date}</td>
                                 <td>{refill.gas_price}</td>
-                            </tr>)}
+                            </tr>
+                        )}
+                        <tr>
+                            <td>TOTAL</td>
+                            {this.props.refillTotal && this.props.refillTotal.length > 0 && (
+                                <td>{this.props.refillTotal[0].sum}</td>
+                            )}
+                            
+                            {/* <td>{[1]}</td> */}
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -32,6 +57,7 @@ class RefillGasCost extends Component {
 }
 
 const mapStateToProps = state => ({
-    refillCost: state.refillCost
+    refillCost: state.refillCost,
+    refillTotal: state.refillTotal,
 });
 export default connect(mapStateToProps)(RefillGasCost);

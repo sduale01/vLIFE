@@ -6,6 +6,7 @@ import sensorSaga from './sensorSaga';
 import gasDataSaga from './gasDataSaga';
 import refillGasSaga from './refillGasSaga';
 import refillCostSaga from './refillCostSaga';
+import refillTotalSaga from './refillTotalSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     gasDataSaga(),
     refillGasSaga(),
     refillCostSaga(),
+    refillTotalSaga(),
   ]);
 }

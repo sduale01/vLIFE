@@ -12,6 +12,7 @@ class SensorGraphs extends Component {
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_GAS_DATA'})
     this.props.dispatch({type: 'FETCH_GAS_PRICE'})
+    // this.props.dispatch({type: 'FETCH_REFILL_TOTAL'})
     this.startPolling();
 }
 // stops refresh when you leave page

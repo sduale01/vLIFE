@@ -10,14 +10,14 @@ class HighchartsExample extends Component {
         return (
             <div className="app">
             {/* {JSON.stringify(this.props.gasData.map(row => Number(row.level)))} */}
-            <HighchartsChart>
+            <HighchartsChart >
               <Chart />
         
               <Title>Live Gas Data</Title>
         
               <Legend layout="vertical" align="right" verticalAlign="middle" />
         
-              <XAxis>
+              <XAxis type='datetime'>
                 <XAxis.Title>Time</XAxis.Title>
                 
               </XAxis>

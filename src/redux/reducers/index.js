@@ -6,6 +6,7 @@ import sensor from './sensorReducer';
 import gasData from './gasDataReducer';
 import refillGas from './refillGasReducer';
 import refillCost from './refillCostReducer';
+import refillTotal from './refillTotalReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   gasData,
   refillGas,
   refillCost,
+  refillTotal,
 });
 
 export default rootReducer;
