@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import HighchartsExample from './HighchartsExample';
-import GoogleMaps from '../GoogleMaps/GoogleMaps';
+// import GoogleMaps from '../GoogleMaps/GoogleMaps';
 // import Highcharts from "highcharts";
 // import HighchartsReact from 'highcharts-react-official';
 
