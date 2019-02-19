@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import SensorList from './SensorList';
 import axios from 'axios';
+
+// my components
+import SensorList from './SensorList';
 import StopCar from './StopCar';
+import RefillGas from '../RefillGas/RefillGas';
 
 class Sensors extends Component {
   constructor() {
@@ -22,7 +25,7 @@ class Sensors extends Component {
       () => { 
         this.props.dispatch({type: 'FETCH_SENSOR'})
         this.props.dispatch({type: 'FETCH_REFILL'});
-      }, 3000);
+      }, 1000);
   }
 
   componentWillUnmount() {
@@ -59,6 +62,8 @@ class Sensors extends Component {
         <StopCar />
         <h3>Sensor Name</h3>
         <SensorList history={this.props.history}/>
+        <RefillGas />
+
         
         
     </div>
