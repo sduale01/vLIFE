@@ -15,11 +15,13 @@ class RefillGas extends Component {
 
     alertm = () => {
         if (this.props.refillGas.greater == true) {
-            let refillPrice = Number(prompt("how much did you spend on gas:", "amount here"));
+            let prompNumber = Number(prompt("how much did you spend on gas:", "amount here"));
             // this.setState({
             //     refillCost: refillPrice,
             // });
-            return refillPrice;
+            const refillPrice = {refillPrice: prompNumber}
+            this.props.dispatch({type: 'ADD_GAS_PRICE', payload: refillPrice});
+            return prompNumber;
         }
     }
     render() {

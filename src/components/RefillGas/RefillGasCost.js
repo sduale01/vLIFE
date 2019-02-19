@@ -8,8 +8,9 @@ class RefillGasCost extends Component {
     render() {
         return (
             <div>
-                {JSON.stringify(this.props.refillGas)}
+                
                 <h1>Amount spent on gas per month</h1>
+                {JSON.stringify(this.props.refillGas)}
                 <table>
                     <thead>
                         <tr>

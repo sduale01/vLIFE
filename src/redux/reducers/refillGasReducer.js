@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 const refillGasReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_GAS_REFILL':
