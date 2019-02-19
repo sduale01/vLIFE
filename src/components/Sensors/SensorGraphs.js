@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import HighchartsExample from './HighchartsExample';
+import DeleteChart from './DeleteChart';
+import RefillGasCost from '../RefillGas/RefillGasCost';
 // import GoogleMaps from '../GoogleMaps/GoogleMaps';
 // import Highcharts from "highcharts";
 // import HighchartsReact from 'highcharts-react-official';
@@ -20,6 +22,7 @@ componentWillUnmount() {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_GAS_DATA'});
+        // this.props.dispatch({type: 'FETCH_GAS_PRICE'})
       }, 1000);
   }
     render() {  
@@ -28,11 +31,8 @@ componentWillUnmount() {
                 <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
                 {/* <GoogleMaps /> */}
-                {/* <ul>
-                    {this.props.gasData.map(row => {
-                        return <li key={row.id}>{row.level}: {row.time}</li>
-                    })}
-                </ul> */}
+                <DeleteChart />
+                <RefillGasCost />
             </div>
         );
     }
