@@ -15,23 +15,4 @@ router.get('/', (req,res) => {
     });
 }); // end of GET
 
-// post newest gas spending into the gas_budget table
-router.post('/gasPrice', (req, res) => {
-    console.log('req.body is: ', req.body);
-    
-    const queryText =  `INSERT INTO "gas_budget" ("gas_price") VALUES ($1)`
-    pool.query(queryText, [req.body.refillPrice]).then(response => {res.sendStatus(201)})
-    .catch(error => {
-        console.log('error in making POST ', error);
-        res.sendStatus(500);
-    });
-}); // end of POST
-// GET amount spent on gas over time
-router.get('/gasPrice', (req, res) => {
-    pool.query(`SELECT * FROM "gas_budget"`).then(response => res.send(response.rows))
-    .catch(error => {
-        console.log('error in making GET request', error);
-        res.sendStatus(500);
-    })
-})
 module.exports = router;

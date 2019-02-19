@@ -10,7 +10,7 @@ function* addGasPrice(action) {
       };
       console.log(action.payload);
       
-      yield axios.post('/api/refillGas/gasPrice', action.payload)
+      yield axios.post('/api/gasPrice', action.payload)
       yield put({type: 'SET_GAS_PRICE'})
     }catch (error) {
       console.log('error in sending POST to /refellGas/gasprice');
@@ -25,7 +25,9 @@ function* addGasPrice(action) {
         withCredentials: true,
       };
   
-      const response = yield axios.get('/api/refillGas/gasPrice', config);
+      const response = yield axios.get('/api/gasPrice', config);
+      console.log(response.data);
+      
       yield put({type: 'SET_GAS_PRICE', payload: response.data})
     } catch(error) {
       console.log('error in making GET request to /refillgas/gasprice');

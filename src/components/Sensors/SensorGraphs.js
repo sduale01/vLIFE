@@ -11,6 +11,7 @@ class SensorGraphs extends Component {
   // GETS table data on page load
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_GAS_DATA'})
+    this.props.dispatch({type: 'FETCH_GAS_PRICE'})
     this.startPolling();
 }
 // stops refresh when you leave page
@@ -22,7 +23,6 @@ componentWillUnmount() {
     this.interval = setInterval(
       () => { 
         this.props.dispatch({type: 'FETCH_GAS_DATA'});
-        // this.props.dispatch({type: 'FETCH_GAS_PRICE'})
       }, 1000);
   }
     render() {  

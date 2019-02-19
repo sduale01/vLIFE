@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class RefillGasCost extends Component {
-    componentDidMount() {
-        this.props.dispatch({type: 'FETCH_GAS_PRICE'})
-    }
+    // componentDidMount() {
+    //     this.props.dispatch({type: 'FETCH_GAS_PRICE'})
+    // }
     render() {
         return (
             <div>
                 
                 <h1>Amount spent on gas per month</h1>
-                {JSON.stringify(this.props.refillGas)}
+                {/* {JSON.stringify(this.props.refillCost)} */}
                 <table>
                     <thead>
                         <tr>
@@ -19,7 +19,7 @@ class RefillGasCost extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.refillGas.map(refill => 
+                        {this.props.refillCost.map(refill => 
                             <tr>
                                 <td>{refill.refill_date}</td>
                                 <td>{refill.gas_price}</td>
@@ -32,6 +32,6 @@ class RefillGasCost extends Component {
 }
 
 const mapStateToProps = state => ({
-    refillGas: state.refillGas
+    refillCost: state.refillCost
 });
 export default connect(mapStateToProps)(RefillGasCost);
