@@ -49,5 +49,4 @@ class GoogleMaps extends Component {
 }
 // const API_KEY = process.env.key;
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyAAqLJxUxikBR1RZOussJZwK31QoNTa7n8'
 })(GoogleMaps);
