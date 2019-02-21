@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
+// imports
+import MenuIcon from './MenuIcon';
+
 const Nav = (props) => (
   <div className="nav">
     <Link to="/homepage">
@@ -19,10 +22,8 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/sensors">
-            Sensor
-          </Link>
           <LogOutButton className="nav-link"/>
+          <MenuIcon />
         </>
       )}
     </div>
