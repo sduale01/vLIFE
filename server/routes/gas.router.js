@@ -55,36 +55,36 @@ insertGasData = (response, carSpeed) => {
     // let queryText;
     switch (true) {
         case (carSpeed <10):
-        maxFuelLevel -= 1;
+        maxFuelLevel -= 0.3;
         insertQuery(maxFuelLevel);
             
             break;
         case (carSpeed <20):
-        maxFuelLevel -= 2;
+        maxFuelLevel -= 0.6;
         insertQuery(maxFuelLevel);
             break;
         case (carSpeed <30):
-        maxFuelLevel -= 3;
+        maxFuelLevel -= 0.9;
         insertQuery(maxFuelLevel);
             break;
         case (carSpeed <40):
-        maxFuelLevel -= 4;
+        maxFuelLevel -= 1.3;
         insertQuery(maxFuelLevel);
             break;
         case (carSpeed <50):
-        maxFuelLevel -= 5;
+        maxFuelLevel -= 1.7;
         insertQuery(maxFuelLevel);
             break;
         case (carSpeed <60):
-        maxFuelLevel -= 6;
+        maxFuelLevel -= 2.4;
         insertQuery(maxFuelLevel);
             break;
         case (carSpeed <70):
-        maxFuelLevel -= 7;
+        maxFuelLevel -= 2.6;
         insertQuery(maxFuelLevel);
             break;
         case (carSpeed <80):
-        maxFuelLevel -= 8;
+        maxFuelLevel -= 2.9;
         insertQuery(maxFuelLevel);
             break;
         default:

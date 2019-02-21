@@ -5,7 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 // imports
-// import DynamicMenuIcon from './DynamicMenuIcon';
+import DynamicDraweerIcon from './DynamicDrawerIcon';
 
 const Nav = (props) => (
   
@@ -15,7 +15,7 @@ const Nav = (props) => (
       <h2 className="nav-title">vLIFE</h2>
       
     </Link>
-    <div className="nav-right">
+    <div className="nav-rightsds">
       {/* <Link className="nav-link" to="/homepage"> */}
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
@@ -25,9 +25,9 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id &&  (
         <>
-          {/* <LogOutButton className="nav-link"/> */}
+          <LogOutButton className="nav-link"/> 
           {/* {console.log(props.location)} */}
-          {/* <DynamicMenuIcon /> */}
+          <DynamicDraweerIcon />
          
         </>
       )}
