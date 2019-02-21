@@ -6,12 +6,33 @@ import Highcharts from 'highcharts';
 
 class SensorList extends Component {
     componentDidMount() {
-        this.highChartsRender();
-        
+        //this.highChartsRender();
+        // this.startPoling();
     }
 
+    componentDidUpdate() {
+        this.highChartsRender();
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+        //console.log('HERE',this.props.sensor, nextProps)
+        if(this.chart) {
+            this.chart.series[0].setData([107, 31, parseFloat(this.props.sensor.map(x => (x.level))), 83, 2], true);
+        }
+        // Don't rerender the page
+        if(this.props.sensor.length != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    getGasData = () => {
+        console.log('this si wher gas data will go.');
+        
+    }
     highChartsRender() {
-        Highcharts.chart({
+        this.chart = Highcharts.chart({
             chart: {
                 type: 'bar',
                 renderTo: 'all-sensors'
@@ -51,9 +72,14 @@ class SensorList extends Component {
             credits: {
                 enabled: false
             },
+            data : {
+                enablePolling: true,
+                dataRefreshRate: 1
+            },
             series: [{
                 name: 'Level',
-                data: [107, 31, Number(this.props.sensor.map(x => (x.level))), 83, 2]
+                
+                data: [107, 31, parseFloat(this.props.sensor.map(x => (x.level))), 83, 2]
             }]
         });
     }
@@ -63,6 +89,7 @@ class SensorList extends Component {
         this.props.history.push('/graphdata');
     }
     render() {
+        
         return(
             <div>
                 {JSON.stringify(this.props.sensor)}
