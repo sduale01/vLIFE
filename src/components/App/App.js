@@ -8,14 +8,14 @@ import {
 
 import {connect} from 'react-redux';
 
+import HomePage from '../HomePage/HomePage';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-// import InfoPage from '../InfoPage/InfoPage';
+
 
 import SensorGraphs from '../Sensors/SensorGraphs';
 import Sensors from '../Sensors/Sensors';
@@ -34,18 +34,16 @@ class App extends Component {
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
-            {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
-            <Route
+            <ProtectedRoute 
               exact
-              path="/about"
-              component={AboutPage}
+              path="/homepage"
+              component={HomePage}
             />
             <ProtectedRoute 
               exact 
               path="/graphdata"
               component={SensorGraphs}
-             />
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
