@@ -13,12 +13,14 @@ import Nav from '../Nav/Nav';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-import UserPage from '../UserPage/UserPage';
+// import UserPage from '../UserPage/UserPage';
 
 
 import SensorGraphs from '../Sensors/SensorGraphs';
 import Sensors from '../Sensors/Sensors';
 import './App.css';
+
+
 
 class App extends Component {
   componentDidMount () {
