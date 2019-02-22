@@ -18,6 +18,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import SensorGraphs from '../Sensors/SensorGraphs';
 import Sensors from '../Sensors/Sensors';
+import SafetySensors from '../SafetySensors/SafetySensors';
 import './App.css';
 
 
@@ -54,8 +55,14 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/sensors"
+              path="/fluids"
               component={Sensors}
+            />
+
+            <ProtectedRoute 
+              exact
+              path="/safetysensors"
+              component={SafetySensors}
             />
             
             {/* If none of the other routes matched, we will show a 404. */}

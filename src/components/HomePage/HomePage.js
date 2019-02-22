@@ -30,7 +30,11 @@ const styles = theme => ({
 class HomePage extends Component {
 
     handleFluid = () => {
-        this.props.history.push('/sensors')
+        this.props.history.push('/fluids')
+    }
+
+    handleSafetySensor = () => {
+        this.props.history.push('/safetysensors')
     }
     render(){
         const {classes} = this.props;
@@ -38,7 +42,7 @@ class HomePage extends Component {
         return (
             <div>
                 <Button onClick={this.handleFluid} variant="contained" className={classes.button}>FLUIDS</Button>
-                <Button variant="contained" className={classes.button}>SENSORS</Button>
+                <Button onClick={this.handleSafetySensor} variant="contained" className={classes.button}>SAFETY SENSORS</Button>
             </div>
         );
     }

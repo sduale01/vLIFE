@@ -6,7 +6,7 @@ import Highcharts from 'highcharts';
 
 class SensorList extends Component {
     componentDidMount() {
-        //this.highChartsRender();
+        this.highChartsRender();
         // this.startPoling();
     }
 
@@ -67,6 +67,17 @@ class SensorList extends Component {
                     dataLabels: {
                         enabled: true
                     }
+                },
+                series: {
+                    allowPointSelect: true,
+                    point: {
+                        events: {
+                            select: () => {
+                                this.props.history.push('/graphdata')
+                                
+                            }
+                        }
+                    }
                 }
             },
             credits: {
@@ -79,27 +90,27 @@ class SensorList extends Component {
             series: [{
                 name: 'Level',
                 
-                data: [107, 31, parseFloat(this.props.sensor.map(x => (x.level))), 83, 2]
+                data: [87, 31, parseFloat(this.props.sensor.map(x => (x.level))), 37]
             }]
         });
     }
 
     
-    handleShowGasData =() => {
-        this.props.history.push('/graphdata');
-    }
+    // handleShowGasData =() => {
+    //     this.props.history.push('/graphdata');
+    // }
     render() {
         
         return(
             <div>
-                {JSON.stringify(this.props.sensor)}
+                {/* {JSON.stringify(this.props.sensor)}
                 <ul>
                     {this.props.sensor.map(x => {
                         return <li key={x.id}>Sensor name: Gas level: {x.level}
                                 <button onClick={this.handleShowGasData}>See Data</button>
                                 </li>
                     })}
-                </ul>
+                </ul> */}
                 <div id="all-sensors">
                     
                 </div>

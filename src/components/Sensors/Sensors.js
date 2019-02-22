@@ -64,7 +64,7 @@ class Sensors extends Component {
           <button>Set Speed</button>
         </form>
         <StopCar />
-        <h3>Sensor Name</h3>
+        {/* <h3>Sensor Name</h3> */}
         <SensorList history={this.props.history}/>
         <RefillGas />
 

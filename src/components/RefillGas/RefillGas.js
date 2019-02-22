@@ -27,8 +27,8 @@ class RefillGas extends Component {
         
         return (
             <div>
-                <h4>This will display a prompt when gas has been refilled</h4>
-                {JSON.stringify(this.props.refillGas)}
+                {/* <h4>This will display a prompt when gas has been refilled</h4>
+                {JSON.stringify(this.props.refillGas)} */}
                 {this.alertm()}
             </div>
         );
