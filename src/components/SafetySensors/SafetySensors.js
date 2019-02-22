@@ -15,7 +15,7 @@ class SafetySensors extends Component {
                 <button onClick={this.handleBack}>Back</button>
                 <h1>Show list of vehicle sensors</h1>
                 {/* {JSON.stringify(this.props.safetySensor)} */}
-                <table>
+                {/* <table>
                     <thead>
                         <th>
                             <td>Name</td>
@@ -30,7 +30,14 @@ class SafetySensors extends Component {
                             )
                         )}
                     </tbody>
-                </table>
+                </table> */}
+                <div>
+                {this.props.safetySensor && (
+                            this.props.safetySensor.map(x => 
+                                <ListItem key={x.id} x={x} />
+                            )
+                        )}
+                </div>
             </div>
         )
     }
