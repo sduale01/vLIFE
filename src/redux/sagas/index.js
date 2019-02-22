@@ -7,6 +7,7 @@ import gasDataSaga from './gasDataSaga';
 import refillGasSaga from './refillGasSaga';
 import refillCostSaga from './refillCostSaga';
 import refillTotalSaga from './refillTotalSaga';
+import safetySensorSaga from './safetySensorSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -17,13 +18,14 @@ import refillTotalSaga from './refillTotalSaga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(),
-    registrationSaga(),
     userSaga(),
+    loginSaga(),
     sensorSaga(),
     gasDataSaga(),
     refillGasSaga(),
     refillCostSaga(),
     refillTotalSaga(),
+    safetySensorSaga(),
+    registrationSaga(),
   ]);
 }

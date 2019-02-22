@@ -20,7 +20,7 @@ function* safetySensor() {
     // the client-side code know the user is logged in
     console.log('safety sensors: ', response.data);
     
-    // yield put({ type: 'SET_GAS_REFILL', payload: response.data });
+    yield put({ type: 'SET_SAFETY_SENSOR', payload: response.data });
   } catch (error) {
     console.log('refill Gas GET get request failed', error);
   }
@@ -28,7 +28,7 @@ function* safetySensor() {
 
 
 function* safetySensorSaga() {
-  yield takeLatest('FETCH_REFILL', safetySensor);
+  yield takeLatest('FETCH_SAFETY_SENSOR', safetySensor);
 }
 
 export default safetySensorSaga;

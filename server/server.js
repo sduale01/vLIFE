@@ -14,6 +14,7 @@ const gasRouter = require('./routes/gas.router');
 const gasData = require('./routes/gasdata.router');
 const refillGas = require('./routes/refillGas.router');
 const refillCost = require('./routes/refillCost.router');
+const safetySensor = require('./routes/safetySensor.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/api/gas', gasRouter);
 app.use('/api/gasdata', gasData);
 app.use('/api/refillGas', refillGas);
 app.use('/api/gasPrice', refillCost);
+app.use('/api/safetysensor', safetySensor);
 
 // Serve static files
 app.use(express.static('build'));
