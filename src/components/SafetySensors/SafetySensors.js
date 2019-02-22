@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class SafetySensors extends Component {
+    componentDidMount() {
+        this.props.dispatch({type: 'FETCH_SAFETY_SENSOR'})
+    }
     handleBack = () => {
         this.props.history.goBack()
     }
@@ -14,4 +18,4 @@ class SafetySensors extends Component {
     }
 }
 
-export default SafetySensors;
+export default connect()(SafetySensors);
