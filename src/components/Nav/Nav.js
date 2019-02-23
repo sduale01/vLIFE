@@ -27,10 +27,11 @@ const Nav = (props) => (
         <>
           {/* <LogOutButton className="nav-link"/>  */}
           {/* {console.log(props.location)} */}
-          <DynamicDrawerIcon />
+          
          
         </>
       )}
+      <DynamicDrawerIcon user={props.user.id}/>
     </div>
   </div>
 );

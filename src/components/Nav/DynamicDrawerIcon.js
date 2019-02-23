@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,7 +14,7 @@ import MailIcon from '@material-ui/icons/Mail';
 
 const styles = {
     list: {
-      width: 250,
+      width: 150,
     },
     fullList: {
       width: 'auto',
@@ -22,8 +23,8 @@ const styles = {
 
 class DynamicDrawerIcon extends Component {
     
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             left: false,
@@ -51,12 +52,12 @@ class DynamicDrawerIcon extends Component {
               </List>
               <Divider />
               <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
+                  <ListItem>
+                      {this.props.user && (
+                          <LogOutButton />
+                      )}
+                    
                   </ListItem>
-                ))}
               </List>
             </div>
           );
