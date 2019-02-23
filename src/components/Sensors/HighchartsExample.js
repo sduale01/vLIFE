@@ -47,11 +47,11 @@ class HighchartsExample extends Component {
 }
 
   highChartsRender = () => {
-    // Highcharts.setOptions({
-    //   global: {
-    //     useUTC: false
-    //   }
-    // })
+    Highcharts.setOptions({
+      global: {
+        useUTC: false
+      }
+    })
     this.chart = Highcharts.chart('scatter-plot-graph', {
       chart: {
           type: 'scatter',
@@ -62,7 +62,13 @@ class HighchartsExample extends Component {
       },
       xAxis: {
         type: 'datetime',
-        // minTickInterval: moment.duration(1, 'month').asMilliseconds(),
+        // labels: {
+        //     format: '{value:%Y-%b-%e}',
+        //   },
+        dateTimeLabelFormats: {
+            day: '%e. %b'
+        },
+        // minTickInterval: moment.duration(3, 'day').asMilliseconds(),
         // labels:{ formatter: function() { return Highcharts.dateFormat('%m-%d-%y'); } },
           title: {
               enabled: true,
@@ -77,16 +83,6 @@ class HighchartsExample extends Component {
           title: {
               text: 'Level (%)'
           }
-      },
-      legend: {
-          layout: 'vertical',
-          align: 'left',
-          verticalAlign: 'top',
-          x: 100,
-          y: 70,
-          floating: true,
-          backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
-          borderWidth: 1
       },
       plotOptions: {
           scatter: {
@@ -119,44 +115,20 @@ class HighchartsExample extends Component {
               this.props.gasData.map(x  => 
              [Number(x.level)]  
            )
-          
-        // data: [[Date.UTC(2010, 0, 1),24]]
       }]
     });// end of highcharts
   }
     render() {
         return (
           <div>
-            {/* {JSON.stringify(this.props.gasData.map(x => Number(x.level)))} */}
-              {(JSON.stringify(this.props.gasData.map(x  => {
+              {/* {(JSON.stringify(this.props.gasData.map(x  => {
                  return [moment(x.time).format('Y, D, M'), Number(x.level)]
               }
-                )))}
+                )))} */}
             <div id="scatter-plot-graph">
             
             </div>
         </div>
-        //     <div className="app">
-        //     {/* {JSON.stringify(this.props.gasData.map(row => Number(row.level)))} */}
-        //     <HighchartsChart >
-        //       <Chart />
-        
-        //       <Title>Live Gas Data</Title>
-        
-        //       <Legend layout="vertical" align="right" verticalAlign="middle" />
-        
-        //       <XAxis type='datetime'>
-        //         <XAxis.Title>Time</XAxis.Title>
-                
-        //       </XAxis>
-        
-        //       <YAxis>
-        //         <YAxis.Title>Gas(g)</YAxis.Title>
-        //         <LineSeries name="Gas Level" data={this.props.gasData.map(row => [Number(row.level), moment(row.time).format('MM-DD-YYYY')])} />
-        //       </YAxis>
-        //     </HighchartsChart>
-            
-        //   </div>
         )
     }
 
