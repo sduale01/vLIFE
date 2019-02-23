@@ -5,7 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 // imports
-import DynamicDraweerIcon from './DynamicDrawerIcon';
+import DynamicDrawerIcon from './DynamicDrawerIcon';
 
 const Nav = (props) => (
   
@@ -25,9 +25,9 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id &&  (
         <>
-          <LogOutButton className="nav-link"/> 
+          {/* <LogOutButton className="nav-link"/>  */}
           {/* {console.log(props.location)} */}
-          <DynamicDraweerIcon />
+          <DynamicDrawerIcon />
          
         </>
       )}
