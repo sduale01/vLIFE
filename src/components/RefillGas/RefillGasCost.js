@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 class RefillGasCost extends Component {
 
@@ -12,7 +13,7 @@ class RefillGasCost extends Component {
             <div>
                 
                 <h1>Amount spent on gas per month</h1>
-                {JSON.stringify(this.props.refillTotal)}
+                {/* {JSON.stringify(this.props.refillTotal)} */}
                 <table>
                     <thead>
                         <tr>
@@ -23,7 +24,7 @@ class RefillGasCost extends Component {
                     <tbody>
                         {this.props.refillCost.map(refill => 
                             <tr>
-                                <td>{refill.refill_date}</td>
+                                <td>{moment(refill.refill_date).format('DD-MM-YYYY')}</td>
                                 <td>{refill.gas_price}</td>
                             </tr>
                         )}

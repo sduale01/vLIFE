@@ -16,6 +16,7 @@
     "highcharts": "^7.0.3",
     "highcharts-react": "0.0.3",
     "highcharts-react-official": "^2.0.0",
+    "moment": "^2.24.0",
     "node-cron": "^2.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",

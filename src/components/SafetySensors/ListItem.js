@@ -19,10 +19,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import green from '@material-ui/core/colors/green'
+
 
 const styles = theme => ({
     card: {
       maxWidth: 400,
+      backgroundColor: red[500]
     },
     media: {
       height: 0,
@@ -41,11 +44,8 @@ const styles = theme => ({
     expandOpen: {
       transform: 'rotate(180deg)',
     },
-    avatar: {
-      backgroundColor: red[500],
-    },
   });
-  
+
 
 
 class ListItem extends Component {
@@ -67,7 +67,13 @@ class ListItem extends Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classes.card}>
+            <Card className={classnames(classes.card)} style={{backgroundColor: 
+                this.props.x.sensor_enabled && (
+                    green[500]
+                )
+            }}
+            >
+             {/* <Card className={classnames(classes.card)} style={{backgroundColor: red[500]}}> */}
                 <CardHeader title={this.props.x.sensor_name} />
                 <CardActions className={classes.actions} disableActionSpacing>
                     <IconButton 
@@ -90,11 +96,6 @@ class ListItem extends Component {
                     </CardContent>
                     </Collapse>
             </Card>
-                /* // <tr>
-                //     <td>{this.props.x.sensor_name}</td>
-                //     <td>{this.props.x.sensor_enabled}</td>
-                //     <td>{this.props.x.sensor_description}</td>
-                // </tr> */
         );
     }
 }
