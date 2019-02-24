@@ -14,10 +14,10 @@ class Nav extends Component {
       <div className="nav">
       <h2 className="nav-title">vLIFE</h2>
       
-    <div className="nav-right">
-      {/* Show this side drawer if they are logged in, */}
-      {this.props.user.id && ( <DynamicDrawerIcon user={this.props.user.id}/>)}
-    </div>
+      <div className="nav-left">
+        {/* Show this side drawer if they are logged in, */}
+        {this.props.user.id && ( <DynamicDrawerIcon user={this.props.user.id}/>)}
+      </div>
   </div>
     )
   }
