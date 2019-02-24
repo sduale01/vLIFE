@@ -33,7 +33,6 @@ class DynamicDrawerIcon extends Component {
         this.state = {
             left: false,
         }
-        console.log(this.props.location.pathname)
     }
 
     toggleDrawer = (side, open) => () => {
@@ -41,17 +40,18 @@ class DynamicDrawerIcon extends Component {
           [side]: open,
         });
       };
-
-    // handleHombeBtn = () => {
-    //     this.props.props.history.push("/homepage")
-    //     console.log('home clicked');
-    // }
     
     render() {
         const {classes} = this.props;
-        // const {history} = this.props;
         const sideList = (
             <div className={classes.list}>
+            {this.props.user && this.props.location.pathname !== '/homepage' && (
+                <List>
+                    <ListItem button key={this.props.history.location.pathname}>
+                      <Button color="primary" onClick={() => this.props.history.goBack()}>Back</Button>
+                  </ListItem>
+                </List>
+            )}
               <List>
                   
               {/* {console.log(this.props.context.location.pathName)} */}
@@ -65,15 +65,13 @@ class DynamicDrawerIcon extends Component {
               <Divider />
               {this.props.user && (
               <List>
-                  <ListItem button key={this.props.history.location.pathname}>
+                  <ListItem button >
                       <Button color="primary" onClick={() => this.props.history.push('/homepage')}>Home</Button>
                   </ListItem>
                   <ListItem button key="Log out">
                     <ListItemIcon><PowerIcon /></ListItemIcon>
                     <ListItemText primary={<LogOutButton />} />
                   </ListItem>
-                  
-                 
               </List>
                )}
             </div>

@@ -26,14 +26,9 @@ componentWillUnmount() {
         this.props.dispatch({type: 'FETCH_GAS_DATA'});
       }, 1000);
   }
-  handleGoBack = () => {
-    this.props.history.goBack();
-  }
     render() {  
         return (
             <div>
-              <button onClick={this.handleGoBack}>BACK</button>
-              
                 <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
                 {/* <GoogleMaps /> */}

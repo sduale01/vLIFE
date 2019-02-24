@@ -14,16 +14,9 @@ class Nav extends Component {
       <div className="nav">
       <h2 className="nav-title">vLIFE</h2>
       
-    <div className="nav-rightsds">
-      {/* <Link className="nav-link" to="/homepage"> */}
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        {/* {props.user.id ? 'Home' : ''}
-      </Link> */}
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-          
-      <DynamicDrawerIcon user={this.props.user.id} history={this.props.history}/>
+    <div className="nav-right">
+      {/* Show this side drawer if they are logged in, */}
+      {this.props.user.id && ( <DynamicDrawerIcon user={this.props.user.id}/>)}
     </div>
   </div>
     )

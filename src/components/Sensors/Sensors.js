@@ -50,15 +50,9 @@ class Sensors extends Component {
       console.log('error in client side PUT', error);
     });
   }
-
-  handleGoBack = () => {
-    this.props.history.goBack();
-  }
   render() {
     return (
       <div>
-        {/* This form is for choosing the car speed */}
-        <button onClick={this.handleGoBack}>BACK</button>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} type="number" min="0" max="85" />
           <button>Set Speed</button>

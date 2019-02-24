@@ -25,14 +25,26 @@ import './App.css';
 
 class App extends Component {
   componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+    this.startPolling();
+  }
+
+  // stops refresh when you leave page
+componentWillUnmount() {
+  clearInterval(this.interval);
+}
+// refreshes list every 2 seconds
+  startPolling() {
+    this.interval = setInterval(
+      () => { 
+        this.props.dispatch({type: 'FETCH_USER'});
+      }, 2000);
   }
 
   render() {
     return (
       <Router>
         <div>
-          <Nav history={this.props.history}/>
+          <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/homepage */}
             <Redirect exact from="/" to="/homepage" />

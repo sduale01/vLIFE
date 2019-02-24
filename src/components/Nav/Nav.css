@@ -34,5 +34,6 @@
 }
 
 .nav-right {
-  float: right;
+  margin-top: 20px;
+  float: left;
 }
