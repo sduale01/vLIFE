@@ -13,6 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import PowerIcon from '@material-ui/icons/PowerSettingsNewTwoTone'
+import MenuIcon from '@material-ui/icons/Menu';
 
 
 
@@ -50,24 +51,15 @@ class DynamicDrawerIcon extends Component {
                     <ListItem button key={this.props.history.location.pathname}>
                       <Button color="primary" onClick={() => this.props.history.goBack()}>Back</Button>
                   </ListItem>
-                </List>
-            )}
-              <List>
-                  
-              {/* {console.log(this.props.context.location.pathName)} */}
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                ))}
-              </List>
-              <Divider />
-              {this.props.user && (
-              <List>
+
                   <ListItem button >
                       <Button color="primary" onClick={() => this.props.history.push('/homepage')}>Home</Button>
                   </ListItem>
+                </List>
+            )}
+              <Divider />
+              {this.props.user && (
+              <List>
                   <ListItem button key="Log out">
                     <ListItemIcon><PowerIcon /></ListItemIcon>
                     <ListItemText primary={<LogOutButton />} />
@@ -79,7 +71,7 @@ class DynamicDrawerIcon extends Component {
       
         return (
             <div>
-                <Button onClick={this.toggleDrawer('left', true)}>open left</Button>
+                <MenuIcon onClick={this.toggleDrawer('left', true)}/>
                 <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
                     <div
                         tabIndex={0}
