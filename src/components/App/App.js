@@ -32,9 +32,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          <Nav history={this.props.history}/>
           <Switch>
-            {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+            {/* Visiting localhost:3000 will redirect to localhost:3000/homepage */}
             <Redirect exact from="/" to="/homepage" />
             <ProtectedRoute 
               exact

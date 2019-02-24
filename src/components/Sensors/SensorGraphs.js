@@ -33,8 +33,7 @@ componentWillUnmount() {
         return (
             <div>
               <button onClick={this.handleGoBack}>BACK</button>
-              {console.log(this.props.location.pathname)
-              }
+              
                 <HighchartsExample gasData={this.props.gasData}/>
                 {/* {JSON.stringify(this.props.gasData)} */}
                 {/* <GoogleMaps /> */}

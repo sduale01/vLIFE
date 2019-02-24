@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import {withRouter} from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -11,6 +12,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import PowerIcon from '@material-ui/icons/PowerSettingsNewTwoTone'
+
+
 
 const styles = {
     list: {
@@ -29,6 +33,7 @@ class DynamicDrawerIcon extends Component {
         this.state = {
             left: false,
         }
+        console.log(this.props.location.pathname)
     }
 
     toggleDrawer = (side, open) => () => {
@@ -36,13 +41,20 @@ class DynamicDrawerIcon extends Component {
           [side]: open,
         });
       };
+
+    // handleHombeBtn = () => {
+    //     this.props.props.history.push("/homepage")
+    //     console.log('home clicked');
+    // }
     
     render() {
         const {classes} = this.props;
-
+        // const {history} = this.props;
         const sideList = (
             <div className={classes.list}>
               <List>
+                  
+              {/* {console.log(this.props.context.location.pathName)} */}
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                   <ListItem button key={text}>
                     <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -51,14 +63,19 @@ class DynamicDrawerIcon extends Component {
                 ))}
               </List>
               <Divider />
+              {this.props.user && (
               <List>
-                  <ListItem>
-                      {this.props.user && (
-                          <LogOutButton />
-                      )}
-                    
+                  <ListItem button key={this.props.history.location.pathname}>
+                      <Button color="primary" onClick={() => this.props.history.push('/homepage')}>Home</Button>
                   </ListItem>
+                  <ListItem button key="Log out">
+                    <ListItemIcon><PowerIcon /></ListItemIcon>
+                    <ListItemText primary={<LogOutButton />} />
+                  </ListItem>
+                  
+                 
               </List>
+               )}
             </div>
           );
       
@@ -80,4 +97,4 @@ class DynamicDrawerIcon extends Component {
     }
 }
 
-export default withStyles(styles)(DynamicDrawerIcon);
+export default withStyles(styles)(withRouter(DynamicDrawerIcon));

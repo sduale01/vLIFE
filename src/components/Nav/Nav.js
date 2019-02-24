@@ -1,20 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+
 import './Nav.css';
 
 // imports
 import DynamicDrawerIcon from './DynamicDrawerIcon';
 
-const Nav = (props) => (
-  
-  
-  <div className="nav">
-    <Link to="/homepage">
+class Nav extends Component {
+  render(){
+    return (
+      <div className="nav">
       <h2 className="nav-title">vLIFE</h2>
       
-    </Link>
     <div className="nav-rightsds">
       {/* <Link className="nav-link" to="/homepage"> */}
         {/* Show this link if they are logged in or not,
@@ -23,18 +22,14 @@ const Nav = (props) => (
         {/* {props.user.id ? 'Home' : ''}
       </Link> */}
       {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id &&  (
-        <>
-          {/* <LogOutButton className="nav-link"/>  */}
-          {/* {console.log(props.location)} */}
           
-         
-        </>
-      )}
-      <DynamicDrawerIcon user={props.user.id}/>
+      <DynamicDrawerIcon user={this.props.user.id} history={this.props.history}/>
     </div>
   </div>
-);
+    )
+  }
+}
+  
 
 // Instead of taking everything from state, we just want the user
 // object to determine if they are logged in
