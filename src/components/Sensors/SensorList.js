@@ -18,7 +18,7 @@ class SensorList extends Component {
 
         //console.log('HERE',this.props.sensor, nextProps)
         if(this.chart) {
-            this.chart.series[0].setData([107, 31, parseFloat(this.props.sensor.map(x => (x.level))), 83, 2], true);
+            this.chart.series[0].setData([83, 31, parseFloat(this.props.sensor.map(x => (x.level))), 67,], true);
         }
         // Don't rerender the page
         if(this.props.sensor.length != 0) {
