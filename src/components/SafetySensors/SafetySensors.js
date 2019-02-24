@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ListItem from './ListItem';
 
+import './Safety.css'
+
 class SafetySensors extends Component {
     componentDidMount() {
         this.props.dispatch({type: 'FETCH_SAFETY_SENSOR'})
@@ -9,9 +11,9 @@ class SafetySensors extends Component {
     render() {
         return (
             <div>
-                <h4>Sensors</h4>
+                <h4 id="safety-header">Sensors</h4>
                 {/* {JSON.stringify(this.props.safetySensor)} */}
-                <div>
+                <div id="safety-list">
                 {this.props.safetySensor && (
                             this.props.safetySensor.map(x => 
                                 <ListItem key={x.id} x={x} />

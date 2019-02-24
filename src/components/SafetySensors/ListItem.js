@@ -25,7 +25,7 @@ import green from '@material-ui/core/colors/green'
 const styles = theme => ({
     card: {
       maxWidth: 400,
-      backgroundColor: red[500]
+      backgroundColor: red[500],
     },
     media: {
       height: 0,
@@ -44,6 +44,10 @@ const styles = theme => ({
     expandOpen: {
       transform: 'rotate(180deg)',
     },
+    descriptionStyle: {
+        color: '#03181B',
+        fontSize: 20,
+    }
   });
 
 
@@ -67,7 +71,7 @@ class ListItem extends Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classnames(classes.card)} style={{backgroundColor: 
+            <Card id="safety-list-item" className={classnames(classes.card)} style={{backgroundColor: 
                 this.props.x.sensor_enabled && (
                     green[500]
                 )
@@ -89,12 +93,12 @@ class ListItem extends Component {
                 </CardActions>
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography paragraph>Description:</Typography>
-                        <Typography paragraph>
+                        <Typography className={classes.descriptionStyle} paragraph>Description:</Typography>
+                        <Typography className={classes.descriptionStyle} paragraph>
                             {this.props.x.sensor_description}
                         </Typography>
                     </CardContent>
-                    </Collapse>
+                </Collapse>
             </Card>
         );
     }
