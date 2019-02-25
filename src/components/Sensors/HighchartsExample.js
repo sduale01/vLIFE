@@ -20,7 +20,11 @@ import {
 //   }]
 // }
 
-
+Highcharts.setOptions({
+  global: {
+    useUTC: false
+  }
+})
 
 class HighchartsExample extends Component {
   componentDidMount() {
@@ -62,14 +66,7 @@ class HighchartsExample extends Component {
       },
       xAxis: {
         type: 'datetime',
-        // labels: {
-        //     format: '{value:%Y-%b-%e}',
-        //   },
-        dateTimeLabelFormats: {
-            day: '%e. %b'
-        },
-        // minTickInterval: moment.duration(3, 'day').asMilliseconds(),
-        // labels:{ formatter: function() { return Highcharts.dateFormat('%m-%d-%y'); } },
+        // minTickInterval: moment.duration(1, 'month').asMilliseconds(),
           title: {
               enabled: true,
               text: 'Date',
@@ -113,8 +110,8 @@ class HighchartsExample extends Component {
           color: 'rgba(223, 83, 83, .5)',
           data: 
               this.props.gasData.map(x  => 
-             [Number(x.level)]  
-           )
+          [moment(x.time).format('MM/DD/YYYY').valueOf(), Number(x.level)]  
+          )
       }]
     });// end of highcharts
   }
@@ -122,7 +119,7 @@ class HighchartsExample extends Component {
         return (
           <div>
               {/* {(JSON.stringify(this.props.gasData.map(x  => {
-                 return [moment(x.time).format('Y, D, M'), Number(x.level)]
+                 return [moment(x.time).format('MM/DD/YYYY'), Number(x.level)]
               }
                 )))} */}
             <div id="scatter-plot-graph">
