@@ -31,7 +31,7 @@ function startInterval(carSpeed) {
     pool.query(queryText)
     .then(response => {
         console.log('respoense form server;', response.rows[0].level);
-        if( response.rows[0].level <= 10.00) {
+        if( response.rows[0].level <= 3.00) {
             pool.query(`INSERT INTO "gas_sensor_data" ("level") VALUES (88.00)`)
             .then(response => {
                 console.log('response after refilling gas to 88:',response.rows);
