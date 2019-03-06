@@ -1,7 +1,7 @@
 # vLIFE
 vLIFE is an integrated IoT + mobile application that will give you real time diagnostics of your vehicle. vLIFE will send you a notification if a sensor flashes in your vehicle's dashboard, it will tell you what that sensor is and what it does. It will also give you the option to make an appointment with your local auto repair shop. vLIFE will also monitor your vehicle’s fluid levels - e.g: if you are running out of gas it will direct you to a gas station nearby using google maps. 
 
-
+![](public/images/vLIFE-first-feature.gif)
 
 
 ## Getting Started
