@@ -1,0 +1,10 @@
+Given these three (3) syntax for using external code in your javascript file, which do you prefer and why?
+1. Const tests = require(‘./tests.js’)
+2. Import * as tests from ‘./tests’
+3. Import { test1, test2 } from ‘./tests’
+
+I prefer the 3rd (Import { test1, test2 } from ‘./tests’)  because it allows me
+to selectivley load the named imports that I want to use and webpack's tree shaker
+will eliminate the other modules that I won't be using. Considering the project size, 
+this method might save memory. 
+I also prefer the 3rd choice because it is more readable.

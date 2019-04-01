@@ -18,7 +18,7 @@ class Nav extends Component {
         {/* Show this side drawer if they are logged in, */}
         {this.props.user.id && ( <DynamicDrawerIcon user={this.props.user.id}/>)}
       </div>
-  </div>
+  </div> 
     )
   }
 }
