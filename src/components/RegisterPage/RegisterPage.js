@@ -56,7 +56,7 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form className="form-styling" onSubmit={this.registerUser}>
+        <form className="register-form-styling" onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
