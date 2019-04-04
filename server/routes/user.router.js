@@ -15,36 +15,33 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-router.post('/register', (req, res, next) => {  
+router.post('/register', (req, res) => {  
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
-  async () => {
+  (async () => {
     const client = await pool.connect();
     try {
-      
+      await client.query('BEGIN');
+      const registerUser = `INSERT INTO "person" ("username", "password") VALUES ($1, $2)`;
+      await client.query(registerUser, [username, password]);
+
+      const registerCar = `INSERT INTO "car_info" ("make", "model", "year") VALUES ($1, $2, $3)`;
+      await client.query(registerCar, [req.body.car_make, req.body.car_model, req.body.car_year]);
+
+      await client.query('COMMIT');
+      await res.sendStatus(201);
     } catch (error) {
       await client.query('ROLLBACK');
-                await res.sendStatus(500);
-                throw error;
+      await res.sendStatus(500);
+      throw error;
     }finally {
       client.release();
     }
-  }
-
-
-  const queryText = `WITH "new_user" AS 
-      (INSERT INTO "person" ("username", "password") VALUES ($1, $2) RETURNING "id"),
-      "new_user2" AS (INSERT INTO "auto_shop" ("shop_name", "shop_address", "shop_number") VALUES ($6, $7, $8))
-      INSERT INTO "car_info" ("make", "model", "year") VALUES ($3, $4, $5);`;
-  pool.query(queryText, [ username, password, 
-                          req.body.car_make, req.body.car_model,
-                          req.body.car_year, req.body.shop_name,
-                          req.body.shop_address, req.body.shop_number
-                        ])
-    .then(() => { res.sendStatus(201); })
-    .catch((err) => { next(err); });
-});
+  })().catch(error => {
+    console.log(error.stack);
+  });
+ });
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
