@@ -5,6 +5,29 @@ import {connect} from 'react-redux';
 import RegisterCar from './RegisterCar.js';
 import RegisterAutoShop from './RegisterAutoShop.js';
 
+// material ui
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+  },
+  dense: {
+    marginTop: 16,
+  },
+  menu: {
+    width: 200,
+  },
+});
+
 class RegisterPage extends Component {
   state = {
     username: '',
@@ -46,6 +69,7 @@ class RegisterPage extends Component {
   }
 
   render() {
+    const {classes} = this.props;
     return (
       <div>
         {this.props.errors.registrationMessage && (
@@ -56,7 +80,7 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form className="register-form-styling" onSubmit={this.registerUser}>
+        <form className={classes.container} onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
@@ -113,5 +137,5 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(RegisterPage);
+export default withStyles(styles)(connect(mapStateToProps)(RegisterPage));
 
