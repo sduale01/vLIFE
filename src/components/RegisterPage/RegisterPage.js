@@ -73,7 +73,7 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form className={classes.container} onSubmit={this.registerUser}>
-          <center><h3>Register</h3></center>
+          <h3>Register</h3>
           <TextField
             label="Username"
             className={classes.textField}
@@ -94,8 +94,40 @@ class RegisterPage extends Component {
             value={this.state.password}
             onChange={this.handleInputChangeFor('password')}
           />
+          <TextField
+              label="Make"
+              className={classes.textField}
+              type="text"
+              name="make"
+              margin="normal"
+              variant="outlined"
+              value={this.state.car_make}
+              onChange={this.handleInputChangeFor('car_make')}
+          />
+          <TextField
+              label="Model"
+              className={classes.textField}
+              type="text"
+              name="model"
+              margin="normal"
+              variant="outlined"
+              value={this.state.car_model}
+              onChange={this.handleInputChangeFor('car_model')}
+          />
+          <TextField
+              label="Year"
+              className={classes.textField}
+              type="number"
+              min="1885"
+              max="2022"
+              name="year"
+              margin="normal"
+              variant="outlined"
+              value={this.state.car_year}
+              onChange={this.handleInputChangeFor('car_year')}
+          />
 
-          <RegisterCar state={this.state} handleInputChangeFor={this.handleInputChangeFor}/>
+          {/* <RegisterCar state={this.state} handleInputChangeFor={this.handleInputChangeFor}/> */}
           {/* <RegisterAutoShop state={this.state} handleInputChangeFor={this.handleInputChangeFor}/> */}
           <div>
             <input

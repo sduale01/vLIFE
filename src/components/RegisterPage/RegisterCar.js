@@ -17,9 +17,30 @@ const styles = theme => ({
 
 class RegisterCar extends Component {
     render() {
+        const {classes} = this.props;
         return (
             <div>
-                <div>
+            <TextField
+                label="Make"
+                className={classes.textField}
+                type="text"
+                name="make"
+                margin="normal"
+                variant="outlined"
+                value={this.state.car_make}
+                onChange={this.handleInputChangeFor('car_make')}
+            />
+            <TextField
+                label="Model"
+                className={classes.textField}
+                type="text"
+                name="model"
+                margin="normal"
+                variant="outlined"
+                value={this.state.car_model}
+                onChange={this.handleInputChangeFor('car_model')}
+            />
+                {/* <div>
                     <label htmlFor="make">
                     Make:
                     <input
@@ -29,8 +50,8 @@ class RegisterCar extends Component {
                         onChange={this.props.handleInputChangeFor('car_make')}
                     />
                     </label>
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                     <label htmlFor="model">
                     Model:
                     <input
@@ -40,7 +61,7 @@ class RegisterCar extends Component {
                         onChange={this.props.handleInputChangeFor('car_model')}
                     />
                     </label>
-                </div>
+                </div> */}
                 <div>
                     <label htmlFor="year">
                     Year:

@@ -19,6 +19,20 @@ router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
+  async () => {
+    const client = await pool.connect();
+    try {
+      
+    } catch (error) {
+      await client.query('ROLLBACK');
+                await res.sendStatus(500);
+                throw error;
+    }finally {
+      client.release();
+    }
+  }
+
+
   const queryText = `WITH "new_user" AS 
       (INSERT INTO "person" ("username", "password") VALUES ($1, $2) RETURNING "id"),
       "new_user2" AS (INSERT INTO "auto_shop" ("shop_name", "shop_address", "shop_number") VALUES ($6, $7, $8))
