@@ -3,12 +3,10 @@ import {connect} from 'react-redux';
 
 // import componenets I made
 import RegisterCar from './RegisterCar.js';
-import RegisterAutoShop from './RegisterAutoShop.js';
+// import RegisterAutoShop from './RegisterAutoShop.js';
 
 // material ui
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
@@ -20,12 +18,6 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
-  dense: {
-    marginTop: 16,
-  },
-  menu: {
-    width: 200,
-  },
 });
 
 class RegisterPage extends Component {
@@ -35,9 +27,9 @@ class RegisterPage extends Component {
     car_make: '',
     car_model: '',
     car_year: 0,
-    shop_name: '',
-    shop_address: '',
-    shop_number: '',
+    // shop_name: '',
+    // shop_address: '',
+    // shop_number: '',
   };
 
   registerUser = (event) => {
@@ -52,9 +44,9 @@ class RegisterPage extends Component {
           car_make: this.state.car_make,
           car_model: this.state.car_model,
           car_year: this.state.car_year,
-          shop_name: this.state.shop_name,
-          shop_address: this.state.shop_address,
-          shop_number: this.state.shop_address,
+          // shop_name: this.state.shop_name,
+          // shop_address: this.state.shop_address,
+          // shop_number: this.state.shop_address,
         },
       });
     } else {
@@ -81,32 +73,30 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form className={classes.container} onSubmit={this.registerUser}>
-          <h1>Register User</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
+          <center><h3>Register</h3></center>
+          <TextField
+            label="Username"
+            className={classes.textField}
+            type="text"
+            name="username"
+            margin="normal"
+            variant="outlined"
+            value={this.state.username}
+            onChange={this.handleInputChangeFor('username')}
+          />
+          <TextField
+            label="Password"
+            className={classes.textField}
+            type="password"
+            name="password"
+            margin="normal"
+            variant="outlined"
+            value={this.state.password}
+            onChange={this.handleInputChangeFor('password')}
+          />
 
           <RegisterCar state={this.state} handleInputChangeFor={this.handleInputChangeFor}/>
-          <RegisterAutoShop state={this.state} handleInputChangeFor={this.handleInputChangeFor}/>
+          {/* <RegisterAutoShop state={this.state} handleInputChangeFor={this.handleInputChangeFor}/> */}
           <div>
             <input
               className="register"

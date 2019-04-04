@@ -1,5 +1,20 @@
 import React, {Component} from 'react';
 
+// material ui
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+    },
+  });
+
 class RegisterCar extends Component {
     render() {
         return (
@@ -44,4 +59,4 @@ class RegisterCar extends Component {
     }
 }
 
-export default RegisterCar;
+export default withStyles(styles)(RegisterCar);
